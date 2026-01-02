@@ -6,9 +6,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SentMails {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class SentMails implements MailService{
     private int userId;
     private List<ZMail> sharedMails;
+	private static final Logger logger = LogManager.getLogger(SentMails.class);
 
     public SentMails(int userId) {
         this.userId = userId;
@@ -34,6 +38,7 @@ public class SentMails {
 
         } catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
 
@@ -69,6 +74,7 @@ public class SentMails {
 
         } catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
     
@@ -107,6 +113,7 @@ public class SentMails {
 
 	    } catch (Exception e) {
 	    	System.out.println("Enter the valid mailid");
+        	logger.error(e.getMessage());
 	    }
 	}
 }

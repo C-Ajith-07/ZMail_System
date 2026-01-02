@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Authentication {
 
 	List<User> user;
 
+	private static final Logger logger = LogManager.getLogger(Inbox.class);
 	Authentication() {
 		user = new ArrayList<>();
 	}
@@ -31,6 +35,8 @@ public class Authentication {
 		} catch (Exception e) {
 			System.out.println(Color.RED + "Enter the valid data : " + Color.RESET);
 			e.printStackTrace();
+			logger.error(e.getMessage());
+			
 		}
 		return null;
 	}
@@ -62,6 +68,7 @@ public class Authentication {
 		} catch (Exception e) {
 			System.out.println(Color.RED + "Enter the valid data : " + Color.RESET);
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return null;
 	}

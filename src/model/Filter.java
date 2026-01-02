@@ -5,11 +5,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Filter {
 	private int filterId;
 	private String name;
 	private List<User> users;
 	private List<ZMail> mails;
+	private static final Logger logger = LogManager.getLogger(Filter.class);
 
 	public Filter(int filterId, String name) {
 		this.filterId = filterId;
@@ -35,6 +39,7 @@ public class Filter {
 
 		} catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 	}
 
@@ -51,6 +56,7 @@ public class Filter {
 
 		} catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 		return false;
 	}
@@ -83,6 +89,7 @@ public class Filter {
 
 		} catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 	}
 
@@ -125,6 +132,7 @@ public class Filter {
 			stmt.executeUpdate();
 		} catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 	}
 
@@ -147,6 +155,7 @@ public class Filter {
 			}
 		} catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 	}
 

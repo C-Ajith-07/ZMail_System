@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ZmailSystem {
 	List<User> users;
 
@@ -16,8 +19,12 @@ public class ZmailSystem {
 		users = new ArrayList<>();
 	}
 
+	private static final Logger logger = LogManager.getLogger(ZmailSystem.class);
+
 	public static void main(String[] args) {
 		Scanner getInput = new Scanner(System.in);
+
+		logger.info("Email system started");
 		Authentication outh = new Authentication();
 		ZmailSystem zmailUsers = new ZmailSystem();
 		System.out.println(Color.GREEN
@@ -72,6 +79,7 @@ public class ZmailSystem {
 			User user = null;
 			switch (userLoginOption) {
 			case 1:
+				logger.info("user enter into signin");
 				outerloop: while (true) {
 					String userMail = "";
 
@@ -103,6 +111,7 @@ public class ZmailSystem {
 
 				break;
 			case 2:
+				logger.info("user enter into singup");
 				System.out.println(Color.YELLOW + "Enter you name " + Color.RESET);
 				String name = getInput.nextLine();
 				Date dateOfBirth = null;
@@ -137,6 +146,7 @@ public class ZmailSystem {
 			}
 
 			if (user != null) {
+				logger.info("user logined userid : " + user.getUserId());
 				byte userOption = 0;
 				while (userOption != 8) {
 					while (true) {
@@ -162,6 +172,7 @@ public class ZmailSystem {
 
 					switch (userOption) {
 					case 1:
+						logger.info("user entered into inbox userid : " + user.getUserId());
 						byte viewOption = 0;
 						while (viewOption != 5) {
 							while (true) {
@@ -185,6 +196,7 @@ public class ZmailSystem {
 
 							switch (viewOption) {
 							case 1:
+								logger.info("get into view mails in inbox : " + user.getUserId());
 								int count = user.inbox.showMails(user.getMailId());
 								if (count > 0) {
 									int mailId = 0;
@@ -221,15 +233,19 @@ public class ZmailSystem {
 											}
 											switch (userViewOption) {
 											case 1:
+												logger.info("showfullmail userid :" + user.getUserId());
 												mail.showFullDetails();
 												mail.markAsRead();
 												break;
 											case 2:
+												logger.info("add to save list userid : " + user.getUserId());
 												user.save.addMail(mail);
 												break;
 											case 3:
 												user.favorite.addMail(mail);
+												logger.info("add to favorite list user : " + user.getUserId());
 											case 4:
+												logger.info("remove mail userid : " + user.getUserId());
 												user.inbox.removeMail(user.getUserId(), mailId, user.getMailId());
 												break outerLoop;
 											case 5:
@@ -248,7 +264,7 @@ public class ZmailSystem {
 								// --------
 								break;
 							case 2:
-
+								logger.info("already viewed mails userid : " + user.getUserId());
 								int count1 = user.inbox.alreadyRead(user.getMailId());
 								if (count1 > 0) {
 									int mailId = 0;
@@ -285,16 +301,20 @@ public class ZmailSystem {
 											}
 											switch (userViewOption) {
 											case 1:
+												logger.info("view full mail : " + user.getUserId());
 												mail.showFullDetails();
 												mail.markAsRead();
 												break;
 											case 2:
 												user.save.addMail(mail);
+												logger.info("added into save : " + user.getUserId());
 												break;
 											case 3:
 												user.favorite.addMail(mail);
+												logger.info("added into favorite : " + user.getUserId());
 											case 4:
 												user.inbox.removeMail(user.getUserId(), mailId, user.getMailId());
+												logger.info("mail deleted : " + user.getUserId());
 												break outerLoop;
 											default:
 												System.out.println(Color.RED + "Enter the valid input " + Color.RESET);
@@ -310,6 +330,7 @@ public class ZmailSystem {
 								// -
 								break;
 							case 3:
+								logger.info("yet to viewed mails  : " + user.getUserId());
 								int count2 = user.inbox.yetToRead(user.getMailId());
 								if (count2 > 0) {
 									int mailId = 0;
@@ -348,14 +369,18 @@ public class ZmailSystem {
 											case 1:
 												mail.showFullDetails();
 												mail.markAsRead();
+												logger.info("view full mail : " + user.getUserId());
 												break;
 											case 2:
 												user.save.addMail(mail);
+												logger.info("added into save : " + user.getUserId());
 												break;
 											case 3:
 												user.favorite.addMail(mail);
+												logger.info("added into favorite : " + user.getUserId());
 											case 4:
 												user.inbox.removeMail(user.getUserId(), mailId, user.getMailId());
+												logger.info("Remove mail : " + user.getUserId());
 												break outerLoop;
 											default:
 												System.out.println(Color.RED + "Enter the valid input " + Color.RESET);
@@ -373,12 +398,13 @@ public class ZmailSystem {
 							case 4:
 								getInput.nextLine();
 
+								logger.info("search mails  : " + user.getUserId());
 								int mailCount = user.inbox.showMails(user.getMailId());
-								if(mailCount>0) {
-								System.out.println(Color.YELLOW + "Enter the your search option : " + Color.RESET);
-								String search = getInput.nextLine();
-								user.inbox.searchEmail(user.getMailId(), search);}
-								else {
+								if (mailCount > 0) {
+									System.out.println(Color.YELLOW + "Enter the your search option : " + Color.RESET);
+									String search = getInput.nextLine();
+									user.inbox.searchEmail(user.getMailId(), search);
+								} else {
 									System.out.println(Color.YELLOW + "you don't have mails" + Color.RESET);
 								}
 								break;
@@ -392,6 +418,7 @@ public class ZmailSystem {
 						break;
 //		======================================== group oparations ====================================
 					case 2:
+						logger.info("enter into group : "+user.getUserId());
 						byte groupOption = 0;
 						while (groupOption != 3) {
 							while (true) {
@@ -411,7 +438,7 @@ public class ZmailSystem {
 
 							switch (groupOption) {
 							case 1:
-
+								logger.info("view group : "+user.getUserId());
 								int groupCount = user.showGroups();
 								if (groupCount > 0) {
 									Group groupObj = null;
@@ -440,6 +467,7 @@ public class ZmailSystem {
 									// ========= leader option ============
 
 									if (groupObj.getLeaderId() == user.getUserId()) {
+										logger.info(user.getUserId()+" is group admin");
 										while (groupViewOption != 5) {
 
 											while (true) {
@@ -462,9 +490,11 @@ public class ZmailSystem {
 
 											switch (groupViewOption) {
 											case 1:
+												logger.info("show users" +user.getUserId());
 												groupObj.showUsers();
 												break;
 											case 2:
+												logger.info("add user into group" +user.getUserId());
 												String usermail = "";
 												getInput.nextLine();
 												try {
@@ -491,6 +521,7 @@ public class ZmailSystem {
 												}
 												break;
 											case 3:
+												logger.info("list all the mails in group : "+user.getUserId());
 												groupObj.showMails();
 												break;
 											case 4:
@@ -516,8 +547,10 @@ public class ZmailSystem {
 													System.out.println("invalid user id");
 												}
 												groupObj.addMail(groupObj.getGroupId(), mail);
+												logger.info("send mail into group : "+user.getUserId());
 												break;
 											case 5:
+												logger.info("step back into groups : "+user.getUserId());
 												break;
 											default:
 												System.out.println("Enter the valid input");
@@ -553,9 +586,12 @@ public class ZmailSystem {
 											switch (groupViewOption) {
 											case 1:
 												groupObj.showUsers();
+												logger.info("show users" +user.getUserId());
+												
 												break;
 											case 2:
 												groupObj.showMails();
+												logger.info("list all the mails in group : "+user.getUserId());
 												break;
 											case 3:
 												getInput.nextLine();
@@ -579,8 +615,10 @@ public class ZmailSystem {
 													System.out.println("invalid user id");
 												}
 												groupObj.addMail(groupObj.getGroupId(), mail);
+												logger.info("send mail into group : "+user.getUserId());
 												break;
 											case 4:
+												logger.info("step back into groups : "+user.getUserId());
 												break;
 											default:
 												System.out.println("Enter the valid input");
@@ -593,6 +631,7 @@ public class ZmailSystem {
 								}
 								break;
 							case 2:
+								logger.info("creating group : "+user.getUserId());
 								getInput.nextLine();
 								System.out.println("Enter the group name");
 								String groupName = getInput.nextLine();
@@ -608,6 +647,7 @@ public class ZmailSystem {
 
 						break;
 					case 3:
+						logger.info("enter into  filter : "+user.getUserId());
 						user.showFilter();
 						byte filterOption = 0;
 						while (filterOption != 3) {
@@ -629,6 +669,7 @@ public class ZmailSystem {
 
 							switch (filterOption) {
 							case 1:
+								logger.info("show the filter : "+user.getUserId());
 								int filterLength = user.showFilter();
 								if (filterLength > 0) {
 									int filterId = 0;
@@ -639,6 +680,7 @@ public class ZmailSystem {
 											break;
 										} catch (Exception e) {
 											// TODO: handle exception
+											System.out.println("enter the valid filter id");
 										}
 									}
 
@@ -662,9 +704,11 @@ public class ZmailSystem {
 
 											switch (filterUserOption) {
 											case 1:
+												logger.info("view filter mails : "+user.getUserId());
 												obj.showMails();
 												break;
 											case 2:
+												logger.info("add user into filter : "+user.getUserId());
 												String userMail = null;
 												getInput.nextLine();
 												while (true) {
@@ -682,6 +726,7 @@ public class ZmailSystem {
 
 												break;
 											case 3:
+												logger.info("show all filtered users : "+user.getUserId());
 												obj.showUsers();
 												break;
 											case 4:
@@ -699,6 +744,7 @@ public class ZmailSystem {
 								}
 								break;
 							case 2:
+								logger.info("adding new filter : "+user.getUserId());
 								try {
 									getInput.nextLine();
 									System.out.println("Enter the filter name ");
@@ -719,6 +765,7 @@ public class ZmailSystem {
 						}
 						break;
 					case 4:
+						logger.info("entered into save collection : "+user.getUserId());
 						int count = user.save.showMails();
 						if (count > 0) {
 							byte saveViewOption = 0;
@@ -737,6 +784,7 @@ public class ZmailSystem {
 
 							switch (saveViewOption) {
 							case 1:
+								logger.info("view mail in save : "+user.getUserId());
 								int mailId = 0;
 								while (true) {
 									try {
@@ -753,7 +801,9 @@ public class ZmailSystem {
 								// --------
 								break;
 							case 2:
+								logger.info("remove the saved mails : "+user.getUserId());
 								int saveMailId = 0;
+								
 								while (true) {
 									try {
 										System.out.println("Enter the zmail id");
@@ -774,6 +824,8 @@ public class ZmailSystem {
 						}
 						break;
 					case 5:
+
+						logger.info("entered into sharedMails collection : "+user.getUserId());
 						int count1 = user.sharedMails.showMails();
 						if (count1 > 0) {
 							byte sharedMailsOption = 0;
@@ -792,6 +844,7 @@ public class ZmailSystem {
 
 							switch (sharedMailsOption) {
 							case 1:
+								logger.info("enter into view mail : "+user.getMailId());
 								int mailId = 0;
 								while (true) {
 									try {
@@ -818,6 +871,7 @@ public class ZmailSystem {
 						break;
 					case 6:
 						getInput.nextLine();
+						logger.info("create new mail : "+ user.getUserId());
 						System.out.println("To -> mention the zmail id who you want to sent mail");
 						String to = getInput.nextLine().trim();
 						System.out.println("subject ");
@@ -848,6 +902,9 @@ public class ZmailSystem {
 						user.sharedMails.addMail(mail);
 						break;
 					case 7:
+
+						logger.info("entered into favorite collection : "+user.getMailId());
+						
 						int count3 = user.favorite.showMails();
 						if (count3 > 0) {
 							byte favoriteViewOption = 0;
@@ -867,6 +924,7 @@ public class ZmailSystem {
 
 								switch (favoriteViewOption) {
 								case 1:
+									logger.info("view mail in favorite");
 									int mailId = 0;
 									while (true) {
 										try {
@@ -883,6 +941,8 @@ public class ZmailSystem {
 									// --------
 									break;
 								case 2:
+
+									logger.info("remove mails in remove : "+user.getMailId());
 									int favoriteMailId = 0;
 									while (true) {
 										try {
@@ -904,9 +964,11 @@ public class ZmailSystem {
 							}
 						} else {
 							System.out.println("You don't have a mail");
+				        	logger.warn("You don't have a mail");
 						}
 						break;
 					case 8:
+						logger.info("user logout : " + user.getMailId());
 						break;
 					case 9:
 						System.out.println("============= Thank You!!! ============");
@@ -942,6 +1004,7 @@ public class ZmailSystem {
 		} catch (Exception e) {
 			System.out.println("Error loading users: " + e.getMessage());
 			e.printStackTrace();
+        	logger.error(e.getMessage());
 		}
 	}
 

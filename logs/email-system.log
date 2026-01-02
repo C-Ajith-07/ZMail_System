@@ -1,0 +1,54 @@
+2025-12-29 14:49:57 INFO  model.ZmailSystem - Email system started
+2025-12-29 14:49:57 WARN  model.ZmailSystem - This is a warning
+2025-12-29 14:49:57 ERROR model.ZmailSystem - This is an error
+2025-12-30 10:03:01 INFO  model.ZmailSystem - Email system started
+2025-12-30 10:03:01 WARN  model.ZmailSystem - This is a warning
+2025-12-30 10:03:01 ERROR model.ZmailSystem - This is an error
+2025-12-30 10:03:37 INFO  model.ZmailSystem - Email system started
+2025-12-30 10:03:37 WARN  model.ZmailSystem - This is a warning
+2025-12-30 10:03:37 ERROR model.ZmailSystem - This is an error
+2025-12-30 10:03:52 INFO  model.ZmailSystem - user loggined : abi98361@zmail.com
+2025-12-30 10:04:15 INFO  model.ZmailSystem - user loggined : ajit@zmail.com
+2025-12-30 10:07:56 INFO  model.ZmailSystem - Email system started
+2025-12-30 10:07:56 WARN  model.ZmailSystem - This is a warning
+2025-12-30 10:07:56 ERROR model.ZmailSystem - This is an error
+2025-12-31 07:56:53 INFO  model.ZmailSystem - Email system started
+2025-12-31 07:56:54 INFO  model.ZmailSystem - user enter into signin
+2025-12-31 07:57:06 INFO  model.ZmailSystem - user logined : abi98361@zmail.com
+2025-12-31 10:33:13 INFO  model.ZmailSystem - Email system started
+2025-12-31 10:33:15 INFO  model.ZmailSystem - user enter into signin
+2025-12-31 10:33:38 INFO  model.ZmailSystem - user logined : 6
+2025-12-31 10:33:39 INFO  model.ZmailSystem - user enter into inbox6
+2025-12-31 10:35:54 INFO  model.ZmailSystem - get into view mails in inbox6
+2025-12-31 12:54:21 INFO  model.ZmailSystem - Email system started
+2025-12-31 12:57:26 INFO  model.ZmailSystem - Email system started
+2025-12-31 12:57:33 INFO  model.ZmailSystem - user enter into signin
+2025-12-31 13:04:49 INFO  model.ZmailSystem - Email system started
+2025-12-31 13:05:17 INFO  model.ZmailSystem - Email system started
+2025-12-31 13:05:20 INFO  model.ZmailSystem - user enter into signin
+2025-12-31 13:05:28 INFO  model.ZmailSystem - user logined userid : 6
+2025-12-31 13:14:34 INFO  model.ZmailSystem - Email system started
+2025-12-31 13:15:29 INFO  model.ZmailSystem - user enter into signin
+2025-12-31 13:15:40 INFO  model.ZmailSystem - user logined userid : 6
+2025-12-31 13:15:41 INFO  model.ZmailSystem - user entered into inbox userid : 6
+2025-12-31 13:15:58 INFO  model.ZmailSystem - entered into sharedMails collection : 6
+2025-12-31 14:22:22 INFO  model.ZmailSystem - create new mail : 6
+2025-12-31 14:23:35 INFO  model.ZmailSystem - user logout : ajit@zmail.com
+2025-12-31 14:23:36 INFO  model.ZmailSystem - user enter into signin
+2025-12-31 14:25:31 INFO  model.ZmailSystem - user logined userid : 3
+2025-12-31 14:25:44 INFO  model.ZmailSystem - user entered into inbox userid : 3
+2025-12-31 14:25:46 INFO  model.ZmailSystem - get into view mails in inbox : 3
+2025-12-31 14:26:57 INFO  model.ZmailSystem - entered into sharedMails collection : 3
+2025-12-31 14:27:13 INFO  model.ZmailSystem - user logout : ajith@zmail.com
+2025-12-31 14:27:15 INFO  model.ZmailSystem - user enter into signin
+2025-12-31 14:27:19 INFO  model.ZmailSystem - user logined userid : 6
+2025-12-31 14:27:21 INFO  model.ZmailSystem - user entered into inbox userid : 6
+2025-12-31 14:27:22 INFO  model.ZmailSystem - get into view mails in inbox : 6
+2025-12-31 14:27:24 INFO  model.ZmailSystem - get into view mails in inbox : 6
+2025-12-31 14:27:24 INFO  model.ZmailSystem - get into view mails in inbox : 6
+2025-12-31 14:27:24 INFO  model.ZmailSystem - get into view mails in inbox : 6
+2025-12-31 14:27:24 INFO  model.ZmailSystem - get into view mails in inbox : 6
+2025-12-31 14:27:24 INFO  model.ZmailSystem - get into view mails in inbox : 6
+2025-12-31 14:27:25 INFO  model.ZmailSystem - get into view mails in inbox : 6
+2025-12-31 14:27:25 INFO  model.ZmailSystem - get into view mails in inbox : 6
+2025-12-31 14:27:27 INFO  model.ZmailSystem - get into view mails in inbox : 6

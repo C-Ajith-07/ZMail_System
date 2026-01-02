@@ -7,9 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Save {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class Save implements MailService{
 	private int userId;
 	private List<ZMail> savedMails;
+	private static final Logger logger = LogManager.getLogger(Save.class);
+
 
 	public Save(int userId) {
 		this.userId = userId;
@@ -20,7 +25,7 @@ public class Save {
 //        List<ZMail> saved = new ArrayList<>();
 		String sql = """
 				    SELECT z.*
-				    FROM zmail z
+				    FROM zmail z	
 				    JOIN saved_mails s ON z.id = s.mailId
 				    WHERE s.userId = ?;
 				""";
@@ -42,6 +47,7 @@ public class Save {
 
 		} catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 
 //        return saved;
@@ -62,6 +68,7 @@ public class Save {
 
 		} catch (Exception e) {
 			System.out.println("This mail already saved");
+			logger.error(e.getMessage());
 		}
 //    	String sql = "INSERT INTO zmail (content, sender_mail, receiver_mail, subject, cc, mail_date, isRead, isFavorite) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 //        try  {
@@ -95,7 +102,7 @@ public class Save {
 		}
 	}
 
-	int showMails() {
+	public int showMails() {
 		if (savedMails.isEmpty())
 			getSavedMails();
 		for (ZMail mail : savedMails) {
@@ -121,6 +128,7 @@ public class Save {
 
 	    } catch (Exception e) {
 	    	System.out.println("Enter the valid mailid");
+	    	logger.error(e.getMessage());
 	    }
 	}
 }

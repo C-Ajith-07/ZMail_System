@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ZMail {
 
 	// Data members ---------------
@@ -18,6 +21,8 @@ public class ZMail {
 	private Date date;
 	private boolean isRead;
 	private boolean isFavorite;
+
+	private static final Logger logger = LogManager.getLogger(ZMail.class);
 
 	// Constructor -------------------
 
@@ -44,8 +49,7 @@ public class ZMail {
 		isFavorite = false;
 	}
 
-	// ================================================================ getter
-	// setter ===============================================================
+	// ================================================================ getter setter ===============================================================
 
 	
 	public int getId() {
@@ -162,8 +166,10 @@ public class ZMail {
 			stmt.executeUpdate();
 		} catch (SQLException e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		} catch (ClassNotFoundException e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 	}
 
@@ -179,6 +185,7 @@ public class ZMail {
 
 		} catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 	}
 
@@ -237,6 +244,7 @@ public class ZMail {
 
 		} catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 
 		return -1; // failed

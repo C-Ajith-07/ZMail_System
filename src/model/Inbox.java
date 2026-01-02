@@ -6,10 +6,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Inbox {
 	private int userId;
 	private List<ZMail> mails;
 
+
+	private static final Logger logger = LogManager.getLogger(Inbox.class);
 	public Inbox(int userId) {
 		this.userId = userId;
 		this.mails = new ArrayList<>();
@@ -62,6 +67,7 @@ public class Inbox {
 
 	    } catch (Exception e) {
         	System.out.println(Color.RED+"We can't get Mail in DB : "+Color.RESET);
+        	logger.error(e.getMessage());
 	    }
 
 	}
@@ -115,6 +121,7 @@ public class Inbox {
 
 	    } catch (Exception e) {
         	System.out.println(Color.RED+"you can't Add Mail in DB : "+Color.RESET);
+        	logger.error(e.getMessage());
 	    }
 	}
 
@@ -157,6 +164,7 @@ public class Inbox {
 
 	    } catch (Exception e) {
 	    	System.out.println("Enter the valid mailid");
+	    	logger.error(e.getMessage());
 	    }
 	}
 	

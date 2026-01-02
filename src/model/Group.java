@@ -5,12 +5,17 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Group {
     private int groupId;
     private String groupName;
     private List<User> users;    
     private List<ZMail> mails = new ArrayList<>();
     private int leaderId;
+	private static final Logger logger = LogManager.getLogger(Group.class);
+
 
     public Group(int groupId, String groupName, int leaderId) {
         this.groupId = groupId;
@@ -34,6 +39,7 @@ public class Group {
 		} catch (Exception e) {
 
         	System.out.println(Color.RED+"Enter the valid userId : "+Color.RESET);
+        	logger.error(e.getMessage());
 		}
 		return false;
 	}
@@ -55,6 +61,7 @@ public class Group {
 
         } catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
 
@@ -87,6 +94,7 @@ public class Group {
 
         } catch (Exception e) {
         	System.out.println(Color.RED+"User not found : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
 
@@ -125,6 +133,7 @@ public class Group {
             stmt.executeUpdate();
         } catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid data : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
 
@@ -154,6 +163,7 @@ public class Group {
             }
         } catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid user data : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
     

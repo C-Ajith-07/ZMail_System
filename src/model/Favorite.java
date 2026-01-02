@@ -6,9 +6,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Favorite {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class Favorite implements MailService{
 	private int userId;
 	private List<ZMail> favoriteMails;
+	private static final Logger logger = LogManager.getLogger(Favorite.class);
 
 	public Favorite(int userId) {
 		this.userId = userId;
@@ -42,6 +46,7 @@ public class Favorite {
 		} catch (Exception e) {
 			System.out.println("Error loading saved mails: " + e.getMessage());
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 
 //        return saved;
@@ -62,6 +67,7 @@ public class Favorite {
 
 		} catch (Exception e) {
 			System.out.println("This mail already saved");
+			logger.error(e.getMessage());
 		}
 //    	String sql = "INSERT INTO zmail (content, sender_mail, receiver_mail, subject, cc, mail_date, isRead, isFavorite) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 //        try  {
@@ -95,7 +101,7 @@ public class Favorite {
 		}
 	}
 
-	int showMails() {
+	public int showMails() {
 		if (favoriteMails.isEmpty())
 			getSavedMails();
 		for (ZMail mail : favoriteMails) {
@@ -121,6 +127,7 @@ public class Favorite {
 
 	    } catch (Exception e) {
 	    	System.out.println("Enter the valid mailid");
+			logger.error(e.getMessage());
 	    }
 	}
 }

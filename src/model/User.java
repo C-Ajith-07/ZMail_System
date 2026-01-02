@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class User {
 	private int userId;
 	private String name;
@@ -18,6 +21,8 @@ public class User {
 	SentMails sharedMails;
 	Inbox inbox;
 	Favorite favorite;
+
+	private static final Logger logger = LogManager.getLogger(User.class);
 
 	public User(int userId, String name, Date dob, String mailId, String type) {
 		this.userId = userId;
@@ -79,6 +84,7 @@ public class User {
 
         } catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid Filter name : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
 
@@ -113,6 +119,7 @@ public class User {
 
         } catch (Exception e) {
         	System.out.println(Color.RED+"Enter the valid Group name : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
         return null;
     }
@@ -141,6 +148,7 @@ public class User {
 
         } catch (Exception e) {
         	System.out.println(Color.RED+"We can't get filter in DB : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
 
@@ -168,6 +176,7 @@ public class User {
 
         } catch (Exception e) {
         	System.out.println(Color.RED+"We can't get group in DB : "+Color.RESET);
+        	logger.error(e.getMessage());
         }
     }
 

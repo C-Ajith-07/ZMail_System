@@ -11,7 +11,6 @@ public class Color {
 	  public static final String CYAN = "\033[36m";
 	  public static final String WHITE = "\033[37m";
 	  
-	  
 	  public static final String BG_BLACK = "\033[40m";
 	  public static final String BG_RED = "\033[41m";
 	  public static final String BG_GREEN = "\033[42m";
